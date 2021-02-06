@@ -1,8 +1,0 @@
-C:\Users\SKoski\Development\TournamentTracker\TrackerLibrary\bin\Debug\TrackerLibrary.dll
-C:\Users\SKoski\Development\TournamentTracker\TrackerLibrary\bin\Debug\TrackerLibrary.pdb
-C:\Users\SKoski\Development\TournamentTracker\TrackerLibrary\bin\Debug\Dapper.dll
-C:\Users\SKoski\Development\TournamentTracker\TrackerLibrary\bin\Debug\Dapper.xml
-C:\Users\SKoski\Development\TournamentTracker\TrackerLibrary\obj\Debug\TrackerLibrary.csproj.CoreCompileInputs.cache
-C:\Users\SKoski\Development\TournamentTracker\TrackerLibrary\obj\Debug\TrackerLibrary.csproj.CopyComplete
-C:\Users\SKoski\Development\TournamentTracker\TrackerLibrary\obj\Debug\TrackerLibrary.dll
-C:\Users\SKoski\Development\TournamentTracker\TrackerLibrary\obj\Debug\TrackerLibrary.pdb
