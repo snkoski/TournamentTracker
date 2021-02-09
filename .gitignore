@@ -3,6 +3,9 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+# Ignore data folder used to store text files
+Data/
+
 # User-specific files
 *.rsuser
 *.suo
