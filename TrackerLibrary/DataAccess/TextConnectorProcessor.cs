@@ -56,7 +56,7 @@ namespace TrackerLibrary.DataAccess.TextHelpers
             File.WriteAllLines(fileName.FullFilePath(), lines);
         }
 
-        public static List<PersonModel> ConvertToPeopleModels(this List<string> lines)
+        public static List<PersonModel> ConvertToPersonModels(this List<string> lines)
         {
             List<PersonModel> output = new List<PersonModel>();
 
@@ -76,7 +76,7 @@ namespace TrackerLibrary.DataAccess.TextHelpers
             return output;
         }
 
-        public static void SaveToPeopleFile(this List<PersonModel> models, string fileName)
+        public static void SaveToPersonFile(this List<PersonModel> models, string fileName)
         {
             List<string> lines = new List<string>();
             foreach (PersonModel p in models)
