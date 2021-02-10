@@ -14,7 +14,7 @@ CREATE PROCEDURE [dbo].[spPeople_Insert]
 	@FirstName nvarchar(100),
 	@LastName nvarchar(100),
 	@EmailAddress nvarchar(200),
-	@PhoneNumber varchar(20),
+	@CellphoneNumber varchar(20),
 	@id int = 0 output
 
 AS
@@ -23,8 +23,8 @@ BEGIN
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
 
-    INSERT INTO [dbo].[People] (FirstName, LastName, EmailAddress, PhoneNumber)
-	VALUES (@FirstName, @LastName, @EmailAddress, @PhoneNumber);
+    INSERT INTO [dbo].[People] (FirstName, LastName, EmailAddress, CellphoneNumber)
+	VALUES (@FirstName, @LastName, @EmailAddress, @CellphoneNumber);
 
 	SELECT @id = SCOPE_IDENTITY();
 END
