@@ -31,5 +31,12 @@ namespace TrackerLibrary.Models
         /// The primary cell phone number of the person.
         /// </summary>
         public string CellphoneNumber { get; set; }
+        /// <summary>
+        /// Combination of a persons First and Last names.
+        /// </summary>
+        public string FullName
+        {
+            get { return $"{ FirstName } { LastName }"; }
+        }
     }
 }

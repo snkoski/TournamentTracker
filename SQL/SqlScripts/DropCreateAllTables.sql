@@ -48,7 +48,7 @@ CREATE TABLE [dbo].[People](
 	[FirstName] [nvarchar](100) NOT NULL,
 	[LastName] [nvarchar](100) NOT NULL,
 	[EmailAddress] [nvarchar](200) NOT NULL,
-	[PhoneNumber] [varchar](20) NULL,
+	[CellphoneNumber] [varchar](20) NULL,
  CONSTRAINT [PK_People] PRIMARY KEY CLUSTERED 
 (
 	[id] ASC
