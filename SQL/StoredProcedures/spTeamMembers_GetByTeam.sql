@@ -15,8 +15,9 @@ BEGIN
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
 
-    SELECT tm.*
-	FROM [dbo].[TeamMembers] AS tm
-	WHERE [TeamId] = @TeamId;
+    SELECT p.*
+	FROM [dbo].[People] AS p
+	INNER JOIN [dbo].[TeamMembers] AS tm ON tm.PersonId = p.id
+	WHERE tm.TeamId = @TeamId;
 END
 GO
