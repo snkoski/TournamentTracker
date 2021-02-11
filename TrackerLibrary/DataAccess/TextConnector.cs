@@ -82,6 +82,12 @@ namespace TrackerLibrary.DataAccess
 
             return model;
         }
+
+        public List<TeamModel> GetTeam_All()
+        {
+            // TODO - Implement GetTeam_All() for text files.
+            throw new NotImplementedException();
+        }
     }
 }
 
