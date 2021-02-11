@@ -7,17 +7,15 @@ GO
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE [dbo].[spTeamMembers_GetByTeam]
-	@TeamId int
+CREATE PROCEDURE [dbo].[spTeams_GetAll]
+	
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
 
-    SELECT p.*
-	FROM [dbo].[People] AS p
-	INNER JOIN [dbo].[TeamMembers] AS tm ON tm.PersonId = p.id
-	WHERE tm.TeamId = @TeamId;
+    SELECT *
+	FROM [dbo].[Teams];
 END
 GO
