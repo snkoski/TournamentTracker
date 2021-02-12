@@ -9,5 +9,16 @@
     
      steps:
        - checkout
-       - run: cd TrackerLibrary
+       - run:
+          name: "Print Working Directory"
+          command: pwd
+       - run:
+          name: "ls"
+          command: ls
+       - run: 
+          name: "cd to TrackerLibrary"
+          command: cd TrackerLibrary
+       - run:
+          name: "Print Working Directory"
+          command: pwd
        - run: dotnet build
