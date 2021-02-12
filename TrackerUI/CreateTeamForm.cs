@@ -15,21 +15,16 @@ namespace TrackerUI
 {
     public partial class CreateTeamForm : Form
     {
-        List<PersonModel> availableTeamMembers = GlobalConfig.Connection.GetPerson_All();
-        List<PersonModel> selectedTeamMembers = new List<PersonModel>();
-        public CreateTeamForm()
+        private List<PersonModel> availableTeamMembers = GlobalConfig.Connection.GetPerson_All();
+        private List<PersonModel> selectedTeamMembers = new List<PersonModel>();
+        private ITeamRequester callingForm;
+        public CreateTeamForm(ITeamRequester caller)
         {
             InitializeComponent();
-            
-            //CreateMockData();
-
-            WireUpLists();
+            callingForm = caller;
+            //CreateMockData
+            UpdateUI();
         }
-
-        /*private void LoadListData()
-        {
-            List<PersonModel> allTeamMembers = GlobalConfig.Connection.GetPerson_All();
-        }*/
 
         private void CreateMockData()
         {
@@ -40,7 +35,7 @@ namespace TrackerUI
             selectedTeamMembers.Add(new PersonModel { FirstName = "John", LastName = "Elway" });
         }
 
-        private void WireUpLists()
+        private void UpdateUI()
         {
             selectTeamMemberDropDown.DataSource = null;
 
@@ -68,7 +63,7 @@ namespace TrackerUI
                 
                 selectedTeamMembers.Add(p);
 
-                WireUpLists();
+                UpdateUI();
 
                 firstNameValue.Text = "";
                 lastNameValue.Text = "";
@@ -119,7 +114,7 @@ namespace TrackerUI
                 availableTeamMembers.Remove(p);
                 selectedTeamMembers.Add(p);
 
-                WireUpLists(); 
+                UpdateUI(); 
             }
         }
 
@@ -132,7 +127,7 @@ namespace TrackerUI
                 selectedTeamMembers.Remove(p);
                 availableTeamMembers.Add(p);
 
-                WireUpLists(); 
+                UpdateUI(); 
             }
         }
 
@@ -143,9 +138,10 @@ namespace TrackerUI
             t.TeamName = teamNameValue.Text;
             t.TeamMembers = selectedTeamMembers;
 
-            t = GlobalConfig.Connection.CreateTeam(t);
+            GlobalConfig.Connection.CreateTeam(t);
 
-            // TODO - If we aren't closing this form after creation, reset the form.
+            callingForm.TeamComplete(t);
+            this.Close();
         }
     }
 }
