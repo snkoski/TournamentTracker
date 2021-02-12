@@ -9,4 +9,5 @@
     
      steps:
        - checkout
-       - run: dotnet.exe build
+       - run: cd TrackerLibrary
+       - run: dotnet build
