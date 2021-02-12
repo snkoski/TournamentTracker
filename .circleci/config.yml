@@ -22,5 +22,5 @@
           name: "Print Working Directory"
           command: pwd
        - run:
-            name: "cd and dotnet build"
-            command: cd TrackerLibrary; dotnet build
+            name: "cd and dotnet restore and dotnet build"
+            command: cd TrackerLibrary; dotnet restore; dotnet build
