@@ -9,4 +9,5 @@
     
      steps:
        - checkout
+       - run: cd TrackerUI
        - run: dotnet build
