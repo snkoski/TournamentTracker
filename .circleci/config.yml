@@ -17,7 +17,7 @@
           command: ls
        - run: 
           name: "cd to TrackerLibrary and Print Working Directory"
-          command: cd TrackerLibrary && pwd
+          command: cd TrackerLibrary; pwd
        - run:
           name: "Print Working Directory"
           command: pwd
