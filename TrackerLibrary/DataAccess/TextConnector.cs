@@ -13,8 +13,9 @@ namespace TrackerLibrary.DataAccess
         private const string PrizesFile = "PrizeModels.csv";
         private const string PeopleFile = "PersonModels.csv";
         private const string TeamsFile = "TeamModels.csv";
+        private const string TournamentsFile = "TournamentModels.csv";
         
-        public PrizeModel CreatePrize(PrizeModel model)
+        public void CreatePrize(PrizeModel model)
         {
             // Load the text file
             // Convert the text to List<PrizeModel>
@@ -35,12 +36,10 @@ namespace TrackerLibrary.DataAccess
             // Convert the pizes to List<string>
             // Save the List<string> to the text file
             prizes.SaveToPrizeFile(PrizesFile);
-
-            return model;
         }
 
         // TODO - Wire up the CreatePerson for the text files.
-        public PersonModel CreatePerson(PersonModel model)
+        public void CreatePerson(PersonModel model)
         {
             List<PersonModel> people = PeopleFile.FullFilePath().LoadFile().ConvertToPersonModels();
 
@@ -55,8 +54,6 @@ namespace TrackerLibrary.DataAccess
             people.Add(model);
 
             people.SaveToPersonFile(PeopleFile);
-
-            return model;
         }
 
         public List<PersonModel> GetPerson_All()
@@ -64,7 +61,7 @@ namespace TrackerLibrary.DataAccess
             return PeopleFile.FullFilePath().LoadFile().ConvertToPersonModels();
         }
 
-        public TeamModel CreateTeam(TeamModel model)
+        public void CreateTeam(TeamModel model)
         {
             List<TeamModel> teams = TeamsFile.FullFilePath().LoadFile().ConvertToTeamModels(PeopleFile);
 
@@ -79,8 +76,6 @@ namespace TrackerLibrary.DataAccess
             teams.Add(model);
 
             teams.SaveToTeamFile(TeamsFile);
-
-            return model;
         }
 
         public List<TeamModel> GetTeam_All()
@@ -88,9 +83,22 @@ namespace TrackerLibrary.DataAccess
             return TeamsFile.FullFilePath().LoadFile().ConvertToTeamModels(PeopleFile);
         }
 
-        public TournamentModel CreateTournament(TournamentModel model)
+        public void CreateTournament(TournamentModel model)
         {
-            throw new NotImplementedException();
+            List<TournamentModel> tournaments = TournamentsFile.FullFilePath().LoadFile().ConvertToTournamentModels(PrizesFile, TeamsFile, PeopleFile);
+
+            int currentId = 1;
+            if (tournaments.Count > 0)
+            {
+                currentId = tournaments.OrderByDescending(x => x.Id).First().Id + 1;
+            }
+
+            model.Id = currentId;
+            model.Active = 1;
+
+            tournaments.Add(model);
+
+            tournaments.SaveToTournamentFile(TournamentsFile);
         }
     }
 }
