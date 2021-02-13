@@ -120,19 +120,21 @@ namespace TrackerUI
                 return;
             }
 
-            // Create Tournament entry
+            // Create Tournament model
             TournamentModel tm = new TournamentModel();
 
             tm.TournamentName = tournamentNameValue.Text;
             tm.EntryFee = fee;
-
+            
             tm.Prizes = selectedPrizes;
             tm.EnteredTeams = selectedTeams;
+            
+            // Wire our matchups
+
+            // Create Tournament entry
             // Create all of the prizes entries
             // Create all of the team entries
-
-            tm = GlobalConfig.Connection.CreateTournament(tm);
-            // Create the matchups
+            GlobalConfig.Connection.CreateTournament(tm);
         }
     }
 }
