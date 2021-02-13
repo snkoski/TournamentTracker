@@ -75,6 +75,7 @@ CREATE TABLE [dbo].[Tournaments](
 	[id] [int] IDENTITY(1,1) NOT NULL,
 	[TournamentName] [nvarchar](100) NOT NULL,
 	[EntryFee] [money] NOT NULL,
+	[Active] [bit] NOT NULL,
  CONSTRAINT [PK_Tournaments] PRIMARY KEY CLUSTERED 
 (
 	[id] ASC
@@ -249,8 +250,8 @@ GO
 /****** Insert:  Table [dbo].[Tournaments] ******/
 INSERT INTO [dbo].[Tournaments]
 VALUES 
-('First Tourney', 10.00),
-('Free Tourney', 0);
+('First Tourney', 10.00, 1),
+('Free Tourney', 0, 1);
 GO
 
 /****** Insert:  Table [dbo].[Prizes] ******/

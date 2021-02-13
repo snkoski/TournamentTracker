@@ -12,6 +12,10 @@ namespace TrackerLibrary.Models
     public class TournamentModel
     {
         /// <summary>
+        /// The unique identifier for the tournament.
+        /// </summary>
+        public int Id { get; set; }
+        /// <summary>
         /// The name of the tournament.
         /// </summary>
         public string TournamentName { get; set; }
@@ -31,5 +35,9 @@ namespace TrackerLibrary.Models
         /// A list of rounds in the tournament.
         /// </summary>
         public List<List<MatchupModel>> Rounds { get; set; } = new List<List<MatchupModel>>();
+        /// <summary>
+        /// Whether the tournament is currently active or not.
+        /// </summary>
+        public int Active { get; set; }
     }
 }
