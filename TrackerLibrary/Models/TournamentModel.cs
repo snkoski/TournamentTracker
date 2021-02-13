@@ -35,5 +35,9 @@ namespace TrackerLibrary.Models
         /// A list of rounds in the tournament.
         /// </summary>
         public List<List<MatchupModel>> Rounds { get; set; } = new List<List<MatchupModel>>();
+        /// <summary>
+        /// Whether the tournament is currently active or not.
+        /// </summary>
+        public int Active { get; set; }
     }
 }
