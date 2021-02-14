@@ -165,7 +165,7 @@ GO
 CREATE TABLE [dbo].[Matchups](
 	[id] [int] IDENTITY(1,1) NOT NULL,
 	[TournamentId] [int] NOT NULL,
-	[WinnerId] [int] NOT NULL,
+	[WinnerId] [int] NULL,
 	[MatchupRound] [int] NOT NULL,
  CONSTRAINT [PK_Matchups] PRIMARY KEY CLUSTERED 
 (
@@ -193,8 +193,8 @@ CREATE TABLE [dbo].[MatchupEntries](
 	[id] [int] IDENTITY(1,1) NOT NULL,
 	[MatchupId] [int] NOT NULL,
 	[ParentMatchupId] [int] NULL,
-	[TeamCompetingId] [int] NOT NULL,
-	[Score] [float] NOT NULL,
+	[TeamCompetingId] [int] NULL,
+	[Score] [float] NULL,
  CONSTRAINT [PK_MatchupEntries] PRIMARY KEY CLUSTERED 
 (
 	[id] ASC
