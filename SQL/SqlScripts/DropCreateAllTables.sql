@@ -164,9 +164,9 @@ GO
 /****** Create:  Table [dbo].[Matchups] ******/
 CREATE TABLE [dbo].[Matchups](
 	[id] [int] IDENTITY(1,1) NOT NULL,
-	[WinnerId] [int] NOT NULL,
-	[MatchupRound] [int] NOT NULL,
 	[TournamentId] [int] NOT NULL,
+	[WinnerId] [int] NULL,
+	[MatchupRound] [int] NOT NULL,
  CONSTRAINT [PK_Matchups] PRIMARY KEY CLUSTERED 
 (
 	[id] ASC
@@ -193,8 +193,8 @@ CREATE TABLE [dbo].[MatchupEntries](
 	[id] [int] IDENTITY(1,1) NOT NULL,
 	[MatchupId] [int] NOT NULL,
 	[ParentMatchupId] [int] NULL,
-	[TeamCompetingId] [int] NOT NULL,
-	[Score] [int] NOT NULL,
+	[TeamCompetingId] [int] NULL,
+	[Score] [float] NULL,
  CONSTRAINT [PK_MatchupEntries] PRIMARY KEY CLUSTERED 
 (
 	[id] ASC
@@ -302,11 +302,11 @@ GO
 INSERT INTO [dbo].[Matchups]
 VALUES 
 (1, 1, 1),
-(3, 1, 1),
-(1, 2, 1),
+(1, 3, 1),
 (1, 1, 2),
-(4, 1, 2), 
-(4, 2, 2);
+(2, 1, 1),
+(2, 4, 1), 
+(2, 4, 2);
 GO
 
 /****** Insert:  Table [dbo].[MatchupEntries] ******/

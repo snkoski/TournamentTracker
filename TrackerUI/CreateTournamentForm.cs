@@ -128,8 +128,9 @@ namespace TrackerUI
             
             tm.Prizes = selectedPrizes;
             tm.EnteredTeams = selectedTeams;
-            
-            // Wire our matchups
+
+            //Wire our matchups
+            TournamentIogic.CreateRounds(tm);
 
             // Create Tournament entry
             // Create all of the prizes entries
