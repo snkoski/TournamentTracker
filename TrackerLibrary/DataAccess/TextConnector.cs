@@ -10,6 +10,7 @@ namespace TrackerLibrary.DataAccess
 {
     public class TextConnector : IDataConnection
     {
+        // TODO - Remove file path constants and replace with ones from GlobalConfig
         private const string PrizesFile = "PrizeModels.csv";
         private const string PeopleFile = "PersonModels.csv";
         private const string TeamsFile = "TeamModels.csv";
@@ -38,7 +39,6 @@ namespace TrackerLibrary.DataAccess
             prizes.SaveToPrizeFile(PrizesFile);
         }
 
-        // TODO - Wire up the CreatePerson for the text files.
         public void CreatePerson(PersonModel model)
         {
             List<PersonModel> people = PeopleFile.FullFilePath().LoadFile().ConvertToPersonModels();
@@ -85,7 +85,10 @@ namespace TrackerLibrary.DataAccess
 
         public void CreateTournament(TournamentModel model)
         {
-            List<TournamentModel> tournaments = TournamentsFile.FullFilePath().LoadFile().ConvertToTournamentModels(PrizesFile, TeamsFile, PeopleFile);
+            List<TournamentModel> tournaments = TournamentsFile
+                .FullFilePath()
+                .LoadFile()
+                .ConvertToTournamentModels(PrizesFile, TeamsFile, PeopleFile);
 
             int currentId = 1;
             if (tournaments.Count > 0)
@@ -95,6 +98,8 @@ namespace TrackerLibrary.DataAccess
 
             model.Id = currentId;
             model.Active = 1;
+
+            model.SaveRoundsToFile();
 
             tournaments.Add(model);
 
