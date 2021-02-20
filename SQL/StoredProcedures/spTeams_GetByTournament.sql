@@ -7,7 +7,7 @@ GO
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-ALTER PROCEDURE [dbo].[spTeam_GetByTournament]
+CREATE PROCEDURE [dbo].[spTeams_GetByTournament]
 	@TournamentId int
 AS
 BEGIN

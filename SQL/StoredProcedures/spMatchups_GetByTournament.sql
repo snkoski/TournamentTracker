@@ -17,7 +17,8 @@ BEGIN
 	
 	SELECT *
 	FROM [dbo].[Matchups]
-	WHERE [Matchups].[TournamentId] = @TournamentId;
+	WHERE [Matchups].[TournamentId] = @TournamentId
+	ORDER BY [MatchupRound];
 
 END
 GO
