@@ -17,6 +17,7 @@ BEGIN
 	SET NOCOUNT ON;
 
 	SELECT *
-	FROM [dbo].[Tournaments];
+	FROM [dbo].[Tournaments]
+	WHERE [Active] = 1;
 END
 GO

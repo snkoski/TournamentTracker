@@ -10,7 +10,7 @@ GO
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE [dbo].[spPizes_GetByTournament]
+CREATE PROCEDURE [dbo].[spPrizes_GetByTournament]
 	@TournamentId int
 AS
 BEGIN
