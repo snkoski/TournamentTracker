@@ -64,18 +64,7 @@ namespace TrackerUI
 
         private void roundDropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int round = (int)roundDropDown.SelectedItem;
-            foreach (List<MatchupModel> matchups in tournament.Rounds)
-            {
-                if (matchups.First().MatchupRound == round)
-                {
-                    selectedMatchups = matchups;
-                }
-            }
-
-            WireUpMatchupList();
-            //LoadMatchups();
-
+            LoadMatchups();
         }
 
         private void LoadMatchups()
@@ -91,6 +80,53 @@ namespace TrackerUI
             }
 
             WireUpMatchupList();
+        }
+
+        private void LoadMatchup()
+        {
+            //teamOneNameLabel.Text = null;
+            //teamTwoNameLabel.Text = null;
+            MatchupModel m = (MatchupModel)matchupListBox.SelectedItem;
+            if (m != null)
+            {
+                for (int i = 0; i < m.Entries.Count; i++)
+                {
+                    if (i == 0)
+                    {
+                        if (m.Entries[0].TeamCompeting != null)
+                        {
+                            teamOneNameLabel.Text = m.Entries[0].TeamCompeting.TeamName;
+                            teamOneScoreValue.Text = m.Entries[0].Score.ToString();
+
+                            teamTwoNameLabel.Text = "<Bye>";
+                            teamTwoScoreValue.Text = "0";
+                        }
+                        else
+                        {
+                            teamOneNameLabel.Text = "Not Yet Set";
+                            teamOneScoreValue.Text = "";
+                        }
+                    }
+                    if (i == 1)
+                    {
+                        if (m.Entries[1].TeamCompeting != null)
+                        {
+                            teamTwoNameLabel.Text = m.Entries[1].TeamCompeting.TeamName;
+                            teamTwoScoreValue.Text = m.Entries[1].Score.ToString();
+                        }
+                        else
+                        {
+                            teamTwoNameLabel.Text = "Not Yet Set";
+                            teamTwoScoreValue.Text = "";
+                        }
+                    }
+                } 
+            }
+        }
+
+        private void matchupListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadMatchup();
         }
     }
 }
