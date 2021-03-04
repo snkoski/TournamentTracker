@@ -14,7 +14,6 @@ namespace TrackerLibrary
         // Check if it is big enough - if not, add in byes
         // Create our first round of matchups
         // Create every round after that - 8 matchups - 4 matchups - 2 matchups - 1 matchup
-
         public static void CreateRounds(TournamentModel model)
         {
             List<TeamModel> randomizedTeams = RandomizeTeamOrder(model.EnteredTeams);
@@ -28,6 +27,7 @@ namespace TrackerLibrary
 
         public static void UpdateTournamentResults(TournamentModel model)
         {
+            int startingRound = model.CheckCurrentRound();
             List<MatchupModel> toScore = new List<MatchupModel>();
 
             foreach (List<MatchupModel> round in model.Rounds)
@@ -46,6 +46,27 @@ namespace TrackerLibrary
             AdvanceWinners(toScore, model);
 
             toScore.ForEach(x => GlobalConfig.Connection.UpdateMatchup(x));
+            int endingRound = model.CheckCurrentRound();
+
+            if (endingRound > startingRound)
+            {
+                // TODO - Alert users
+            }
+        }
+
+        private static int CheckCurrentRound(this TournamentModel model)
+        {
+            int currentRound = 1;
+
+            foreach (List<MatchupModel> round in model.Rounds)
+            {
+                if (round.All(x => x.Winner != null))
+                {
+                    currentRound += 1;
+                }
+            }
+
+            return currentRound;
         }
 
         private static void AdvanceWinners(List<MatchupModel> models, TournamentModel tournament)
