@@ -171,9 +171,9 @@ namespace TrackerUI
             {
                 output = "Score Two is not a  valid number.";
             }
-            else if (teamOneScore == 0 || teamTwoScore == 0)
+            else if (teamOneScore == 0 && teamTwoScore == 0)
             {
-                output = "You did nod enter a score for either team.";
+                output = "You did not enter a score for either team.";
             }
             else if (teamOneScore == teamTwoScore)
             {
