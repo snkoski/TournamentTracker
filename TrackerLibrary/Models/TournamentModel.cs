@@ -11,6 +11,8 @@ namespace TrackerLibrary.Models
     /// </summary>
     public class TournamentModel
     {
+        public event EventHandler<DateTime> OnTournamentComplete;
+
         /// <summary>
         /// The unique identifier for the tournament.
         /// </summary>
@@ -39,5 +41,10 @@ namespace TrackerLibrary.Models
         /// Whether the tournament is currently active or not.
         /// </summary>
         public int Active { get; set; }
+
+        public void CompleteTournament()
+        {
+            OnTournamentComplete?.Invoke(this, DateTime.Now);
+        }
     }
 }
